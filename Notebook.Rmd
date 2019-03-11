@@ -1,0 +1,70 @@
+---
+title: "BLS Wichita Software Developer Salaries"
+output:
+  html_document:
+    df_print: paged
+---
+```{r}
+source(paste0(getwd(), '/analysis.r'))
+```
+
+- How many developers are in Wichita?
+```{r}
+location_data %>% select(Location, TotalEmployment, Per1000Jobs)
+```
+where "developer" is defined as one of the following:
+```{r}
+occupations
+```
+
+- What % of Wichita's labor market is the dev community?
+% of employment:
+```{r}
+valueToPctStr(pull(location_data %>% filter(Location == 'Wichita, KS'), TotalEmployment) / wichita$TotalEmployment)
+```
+
+% of total salary dollars:
+```{r}
+valueToPctStr(pull(location_data %>% filter(Location == 'Wichita, KS'), TotalSalary) / wichita$TotalSalary)
+```
+
+- Does Wichita have a dev shortage?
+```{r}
+plot_per1000ByLocation
+```
+
+
+- If so, how much $ would it be worth to Wichita to remedy this?
+  
+- How do the salary ranges compare to the salary survey?
+
+There is no perfect way to compare the ranges, despite having percentile information from BLS, because we can't aggregate them into our overall developer category. We could compare by role -- web developer, for example -- but that increases the estimation error and probably creates more problems than it solves.
+
+For a simple comparison, the mean salary from the salary surveys were $68,640 and $77,380 for 2017 and 2018, respectively, compared to a mean salary from the BLS data of:
+```{r}
+mean_salary <- location_data %>% filter(Location == wichita_area_name) %>% pull(MeanSalary)
+mean_salary
+```
+
+This represents a difference of
+```{r}
+valueToPctStr(mean_salary / 68640 - 1)
+```
+and
+```{r}
+valueToPctStr(mean_salary / 77380 - 1)
+```
+
+relative to the 2017 and 2018 survey figures, respectively.
+
+
+- How does the average Wichita dev salary compare to regional peers, RPP adjusted?
+```{r}
+plot_rppAdjustedSalaryByLocation
+```
+Note the RPP values are from 2016 while the salary values are from 2017. Since we are comparing on an MSA relative basis, this difference is negligible.
+
+- How does the average Wichita dev salary compare to tech hubs, RPP adjusted?
+
+  - Ideally, nationally, but be careful with applying person-weighted RPPs to developer-weighted average income figures. Ie, if devs tend to live in high RPP areas, using the national RPP doesn't make sense.
+
