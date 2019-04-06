@@ -44,7 +44,34 @@ valueToPctStr(pull(location_data %>% filter(Location == 'Wichita, KS'), TotalSal
 plot_per1000ByLocation
 ```
 
+Yes. Wichita's developer density is:
+```{r}
+ict_density <- location_data %>% filter(Location == 'Wichita, KS') %>% pull(Per1000Jobs)
+nat_density <- location_data %>% filter(Location == 'National') %>% pull(Per1000Jobs)
+
+ict_density_comp <- ict_density / nat_density
+percent(ict_density_comp) # ICT density as a % of national density
+```
+
+
 ### How much economic value would addressing this shortage generate?
+```{r}
+ict_multiplier_to_match_national <- 1 / ict_density_comp
+ict_base_data <- location_data %>% filter(Location == 'Wichita, KS')
+ict_current_devs <- ict_base_data %>% pull(TotalEmployment)
+
+incremental_devs <- (ict_multiplier_to_match_national - 1) * ict_current_devs
+incremental_devs
+```
+
+```{r}
+ict_mean_dev_salary <- ict_base_data %>% pull(MeanSalary)
+ict_mean_dev_salary
+```
+
+```{r}
+ict_mean_dev_salary * incremental_devs / 1000000
+```
 
 
 ### How do the salary ranges compare to the salary survey?
