@@ -6,6 +6,13 @@ library(readxl)
 library(ggplot2)
 library(dplyr)
 library(gridExtra)
+library(scales)
+
+source(paste0(getwd(), '/chart_functions.r'))
+
+force_digits <- function (num, n_digits) {
+  return (format(round(num, n_digits), nsmall=n_digits))
+}
 
 occupations <- c(
   'Web Developers',
@@ -15,7 +22,7 @@ occupations <- c(
 )
 
 wichita_area_name <- 'Wichita, KS'
-locations <- c(
+peer_locations <- c(
   wichita_area_name,
   'Kansas City, MO-KS',
   'Oklahoma City, OK',
@@ -24,12 +31,24 @@ locations <- c(
   'Tulsa, OK'
 )
 
+non_peer_locations <- c(
+  'San Jose-Sunnyvale-Santa Clara, CA',
+  'Denver-Aurora-Lakewood, CO',
+  'Austin-Round Rock, TX',
+  'Boston-Cambridge-Newton, MA NECTA Division'
+)
+
+locations <- c(peer_locations, non_peer_locations)
+
 # RPPs
-rpp <- read_excel(path=paste0(getwd(), '/regional_price_parities.xls'), skip=5) %>%
+rpp <- read_excel(path=paste0(getwd(), '/regional_price_parities_full.xls'), skip=5) %>%
   mutate(Location=sub('\\s\\(Metropolitan Statistical Area)', '', GeoName), RPP = `2016`) %>%
   filter(!is.na(RPP)) %>%
+  filter(RPP != '(NA)') %>%
   add_row(GeoFips=NA, GeoName='National', `2016`=100.0, Location='National', RPP=100.0) %>%
-  select(Location, RPP)
+  replace(., . == 'Boston-Cambridge-Newton, MA-NH', 'Boston-Cambridge-Newton, MA NECTA Division') %>%
+  select(Location, RPP) %>%
+  mutate(RPP = as.numeric(RPP))
 
 # National stats
 national_raw <- read_excel(path=paste0(getwd(), '/national_M2017_dl.xlsx'))
@@ -80,21 +99,20 @@ location_data <- left_join(location_data, rpp, 'Location') %>%
   mutate(RppAdjSalary = MeanSalary * RPP / 100)
 
 # Compare Per1000Jobs by location
-plot_per1000ByLocation <- ggplot(location_data, aes(x=reorder(Location, -Per1000Jobs), y=Per1000Jobs, fill=(Location == wichita_area_name))) +
-  geom_col() +
-  ylab('Developer Jobs Per 1000 Jobs') +
-  xlab('') +
-  theme(legend.position = 'none') +
-  coord_flip()
+plot_per1000ByLocation <- makeplot_per1000ByLocation(
+  location_data %>%
+  filter(Location %in% peer_locations)
+)
+
+plot_per1000ByLocation_all <- makeplot_per1000ByLocation(location_data)
 
 # Compare RPP adjusted salaries to regional peers
-plot_rppAdjustedSalaryByLocation <- ggplot(location_data, aes(x=reorder(Location, -RppAdjSalary), y=RppAdjSalary, fill=(Location == wichita_area_name))) +
-  geom_col() +
-  ylab('RPP-Adjusted Salaries') +
-  xlab('') +
-  theme(legend.position = 'none') +
-  coord_flip()
+plot_rppAdjustedSalaryByLocation <- makeplot_rppAdjustedSalaryByLocation(
+  location_data %>%
+  filter(Location %in% peer_locations)
+)
 
+plot_rppAdjustedSalaryByLocation_all <- makeplot_rppAdjustedSalaryByLocation(location_data)
 
 # ggplot(chart_data, aes(LocQuotient, MedianSalary, label=Location)) +
 #   geom_point(aes(color=Location)) +

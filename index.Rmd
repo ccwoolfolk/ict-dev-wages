@@ -4,20 +4,31 @@ output:
   html_document:
     df_print: paged
 ---
-```{r}
+## Goals & Motivation
+
+## Data Source
+
+## Analysis
+
+```{r setup, include=FALSE}
 source(paste0(getwd(), '/analysis.r'))
 ```
 
-- How many developers are in Wichita?
+### How many developers are in Wichita?
 ```{r}
-location_data %>% select(Location, TotalEmployment, Per1000Jobs)
+location_data %>%
+  filter(Location %in% peer_locations) %>%
+  select(Location, TotalEmployment, Per1000Jobs) %>%
+  mutate(TotalEmployment = comma(TotalEmployment)) %>%
+  mutate(Per1000Jobs = force_digits(Per1000Jobs, 1)) %>%
+  arrange(desc(Per1000Jobs))
 ```
 where "developer" is defined as one of the following:
 ```{r}
 occupations
 ```
 
-- What % of Wichita's labor market is the dev community?
+### What % of Wichita's labor market is the dev community?
 % of employment:
 ```{r}
 valueToPctStr(pull(location_data %>% filter(Location == 'Wichita, KS'), TotalEmployment) / wichita$TotalEmployment)
@@ -28,15 +39,15 @@ valueToPctStr(pull(location_data %>% filter(Location == 'Wichita, KS'), TotalEmp
 valueToPctStr(pull(location_data %>% filter(Location == 'Wichita, KS'), TotalSalary) / wichita$TotalSalary)
 ```
 
-- Does Wichita have a dev shortage?
+### Does Wichita have a dev shortage?
 ```{r}
 plot_per1000ByLocation
 ```
 
+### How much economic value would addressing this shortage generate?
 
-- If so, how much $ would it be worth to Wichita to remedy this?
-  
-- How do the salary ranges compare to the salary survey?
+
+### How do the salary ranges compare to the salary survey?
 
 There is no perfect way to compare the ranges, despite having percentile information from BLS, because we can't aggregate them into our overall developer category. We could compare by role -- web developer, for example -- but that increases the estimation error and probably creates more problems than it solves.
 
@@ -58,13 +69,27 @@ valueToPctStr(mean_salary / 77380 - 1)
 relative to the 2017 and 2018 survey figures, respectively.
 
 
-- How does the average Wichita dev salary compare to regional peers, RPP adjusted?
+### How does the average Wichita dev salary compare to regional peers, RPP adjusted?
 ```{r}
 plot_rppAdjustedSalaryByLocation
 ```
+
 Note the RPP values are from 2016 while the salary values are from 2017. Since we are comparing on an MSA relative basis, this difference is negligible.
 
-- How does the average Wichita dev salary compare to tech hubs, RPP adjusted?
+### How does the average Wichita dev salary compare to tech hubs, RPP adjusted?
+plot_per1000ByLocation_all
 
-  - Ideally, nationally, but be careful with applying person-weighted RPPs to developer-weighted average income figures. Ie, if devs tend to live in high RPP areas, using the national RPP doesn't make sense.
+```{r}
+plot_per1000ByLocation_all
+```
 
+```{r}
+plot_rppAdjustedSalaryByLocation_all
+```
+
+(Ideally, nationally, but be careful with applying person-weighted RPPs to developer-weighted average income figures. I.e., if devs tend to live in high RPP areas, using the national RPP doesn't make sense.)
+
+### Does Wichita have a different mix of developer titles compared to peer cities?
+
+
+## Conclusion
