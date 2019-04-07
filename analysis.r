@@ -94,7 +94,7 @@ location_data <- group_by(chart_data, Location) %>%
     TotalSalary=sum(SalaryDollars)
   )
 location_data <- left_join(location_data, rpp, 'Location') %>%
-  mutate(RppAdjSalary = MeanSalary * RPP / 100)
+  mutate(RppAdjSalary = MeanSalary * 100 / RPP)
 
 # Compare Per1000Jobs by location
 plot_per1000ByLocation <- makeplot_per1000ByLocation(
