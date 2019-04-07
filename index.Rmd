@@ -101,7 +101,7 @@ relative to the 2017 and 2018 survey figures, respectively.
 plot_rppAdjustedSalaryByLocation
 ```
 
-Note the RPP values are from 2016 while the salary values are from 2017. Since we are comparing on an MSA relative basis, this difference is negligible.
+Note the RPP values are from 2016 while the salary values are from 2018. Since we are comparing on an MSA relative basis, this difference is negligible.
 
 ### How does the average Wichita dev salary compare to tech hubs, RPP adjusted?
 plot_per1000ByLocation_all

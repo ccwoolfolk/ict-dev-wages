@@ -1,7 +1,3 @@
-# https://www.bls.gov/opub/mlr/2016/article/purchasing-power-using-wage-statistics-with-regional-price-parities-to-create-a-standard-for-comparing-wages-across-us-areas.htm
-# Need to make sure dates align if using multiple sources
-# Original data is from 2014
-# See national_M2017_dl for detailed national 2017 stats
 library(readxl)
 library(ggplot2)
 library(dplyr)
@@ -13,6 +9,8 @@ source(paste0(getwd(), '/chart_functions.r'))
 force_digits <- function (num, n_digits) {
   return (format(round(num, n_digits), nsmall=n_digits))
 }
+
+data_year <- 2018
 
 occupations <- c(
   'Web Developers',
@@ -51,13 +49,13 @@ rpp <- read_excel(path=paste0(getwd(), '/regional_price_parities_full.xls'), ski
   mutate(RPP = as.numeric(RPP))
 
 # National stats
-national_raw <- read_excel(path=paste0(getwd(), '/national_M2017_dl.xlsx'))
+national_raw <- read_excel(path=paste0(getwd(), '/national_M', data_year, '_dl.xlsx'))
 total_national_employment = pull(filter(national_raw, OCC_CODE == '00-0000'), TOT_EMP)
 national_filtered <- national_raw %>% filter(`OCC_TITLE` %in% occupations)
 rm(national_raw)
 
 # MSA stats
-msa_raw <- read_excel(path=paste0(getwd(), '/MSA_M2017_dl.xlsx'))
+msa_raw <- read_excel(path=paste0(getwd(), '/MSA_M', data_year, '_dl.xlsx'))
 msa_filtered <- msa_raw %>%
   filter(`OCC_TITLE` %in% occupations) %>%
   filter(`AREA_NAME` %in% locations)
