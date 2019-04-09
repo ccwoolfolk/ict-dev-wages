@@ -5,12 +5,26 @@ output:
     df_print: paged
 ---
 ## Goals & Motivation
+The health of Wichita's professional software development community is often debated but not often researched. Each of us in the community personally experience only a small slice of overall picture, and undoubtedly this personal experience informs our opinions about the whole.
+
+Two underlying questions often form the foundation of such discussions:
+1) Does Wichita have a developer shortage?
+2) Do developers in Wichita earn a reasonable compensation?
+
+These are both complicated questions. What does "developer" mean in this context? How many developers constitutes a shortage? What is reasonable compensation? Should cost of living differences be incurred by the employee or the employer?
+
+But despite these nuances, both questions are inherently _empirical_. Individual perspectives may lead to different interpretations, but all parties in the discussion should, at a minimum, be able to agree on a shared set of basic facts.
 
 ## Data Sources
-RPPs https://www.bea.gov/data/prices-inflation/regional-price-parities-state-and-metro-area
-BLS (wichita link) - https://www.bls.gov/oes/current/oes_48620.htm currently, 'current' likely to be replaced with '2018'
+The Occupational Employment Statistics (OES) survey conducted by the Bureau of Labor Statistics provides the primary data set for this analysis. This survey estimates job counts and salary data by Metropolitan Statistical Area (MSA) and by job category.
 
 > The OES survey is a cooperative effort between BLS and the State Workforce Agencies (SWAs). BLS funds the survey and provides the procedures and technical support, while the State Workforce Agencies collect most of the data. OES estimates are constructed from a sample of about 1.2 million establishments. Each year, two semiannual panels of approximately 200,000 sampled establishments are contacted, one panel in May and the other in November. Responses are obtained by mail, Internet or other electronic means, email, telephone, or personal visit. The May 2017 estimates are based on responses from six semiannual panels collected over a 3-year period: May 2017, November 2016, May 2016, November 2015, May 2015, and November 2014. The overall national response rate for the six panels, based on the 50 states and the District of Columbia, is 72 percent based on establishments and 68 percent based on weighted sampled employment. The unweighted sampled employment of 82 million across all six semiannual panels represents approximately 58 percent of total national employment.
+
+See https://www.bls.gov/oes/current/oes_48620.htm for the current Wichita data. Note that the 2018 survey is used below whereas the link points to an evergreen current version. I.e., "current" will need to be replaced with "2018" in the future.
+
+Since this is a survey, not a complete census, sampling _error_ limits the precision of the estimates. This error can be measured. There could also be sampling _bias_ resulting from the survey design and implementation which cannot be directly measured. These sources of error should inform any conclusions drawn from the data.
+
+Regional Price Parity (RPP) indexes are used to compare the cost of living in different MSAs. These estimates are sourced from the Bureau of Economic Analysis (BEA) at https://www.bea.gov/data/prices-inflation/regional-price-parities-state-and-metro-area. Note that the RPP dates do not align perfectly with the OES survey dates. While not ideal, this is not expected to introduce meaningful error since the _relative_ cost of living differences are not likely to change substantially over a 1-2 year window.
 
 ## Analysis
 
