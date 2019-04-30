@@ -1,8 +1,13 @@
-library(readxl)
-library(ggplot2)
-library(dplyr)
-library(gridExtra)
-library(scales)
+for (pkg in c(
+  'readxl',
+  'ggplot2',
+  'dplyr',
+  'gridExtra',
+  'scales'
+)) {
+  if (!require(pkg, character.only = TRUE)) install.packages(pkg, repos = "http://cran.us.r-project.org")
+  library(pkg, character.only = TRUE)
+}
 
 source(paste0(getwd(), '/chart_functions.r'))
 
