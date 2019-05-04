@@ -135,6 +135,9 @@ plot_rppAdjustedSalaryByLocation_all
 (Ideally, nationally, but be careful with applying person-weighted RPPs to developer-weighted average income figures. I.e., if devs tend to live in high RPP areas, using the national RPP doesn't make sense.)
 
 ### Does Wichita have a different mix of developer titles compared to peer cities?
+To be able to provide a sense of the context of how much an employer in Wichita contribute to the software community we need to obtain the salary information from employers around the Wichita area. The project describes a developer as “software developer”, “web developer”, and “computer programmer”.
+The data was collected through glassdoor.com. Glassdoor lets any employee and employer to anonymously post a review and work compensation about their company. The data that are collected through Glassdoor in the Wichita area is weak due to the low amount of posting and the data are not updated yearly. It would be hard to make use of the data but it still provides base knowledge for us to know how much each employer have contributed to the job market. While not ideal, we can make an assumption that job salary does not increase significantly from each year.
+The data is collected through searches for “software developer”, “web developer”, and “ computer programmer” with restriction to only Wichita, Kansas. The Industry, company size, and the year of experience are the variable that is not set. The companies name, job title, base salary, highest paid salary, additional benefit, month and year that data are updated, and respondent number are collected.
 
 
 ## Conclusion
