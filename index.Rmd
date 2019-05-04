@@ -135,9 +135,24 @@ plot_rppAdjustedSalaryByLocation_all
 (Ideally, nationally, but be careful with applying person-weighted RPPs to developer-weighted average income figures. I.e., if devs tend to live in high RPP areas, using the national RPP doesn't make sense.)
 
 ### Does Wichita have a different mix of developer titles compared to peer cities?
-To be able to provide a sense of the context of how much an employer in Wichita contribute to the software community we need to obtain the salary information from employers around the Wichita area. The project describes a developer as “software developer”, “web developer”, and “computer programmer”.
-The data was collected through glassdoor.com. Glassdoor lets any employee and employer to anonymously post a review and work compensation about their company. The data that are collected through Glassdoor in the Wichita area is weak due to the low amount of posting and the data are not updated yearly. It would be hard to make use of the data but it still provides base knowledge for us to know how much each employer have contributed to the job market. While not ideal, we can make an assumption that job salary does not increase significantly from each year.
-The data is collected through searches for “software developer”, “web developer”, and “ computer programmer” with restriction to only Wichita, Kansas. The Industry, company size, and the year of experience are the variable that is not set. The companies name, job title, base salary, highest paid salary, additional benefit, month and year that data are updated, and respondent number are collected.
 
+### Wichita employers' contribution to the job market
+
+### Methodology
+
+To be able to provide a sense of the context of how much an employer in Wichita contribute to the software community we need to obtain the salary information from employers around the Wichita area. The project describes a developer as “software developer”, “web developer”, and “computer programmer”.
+
+The data was collected through glassdoor.com. Glassdoor lets any employee and employer to anonymously post a review and work compensation about their company. The data that are collected through Glassdoor in the Wichita area is weak due to the low amount of posting and the data are not updated yearly. It would be hard to make use of the data but it still provides base knowledge for us to know how much each employer have contributed to the job market. While not ideal, we can make an assumption that job salary does not increase significantly from each year.
+
+The data is collected through searches for “software developer”, “web developer”, and “ computer programmer” with restriction to only Wichita, Kansas. Only compensation update that is from 2016 to 2018 are being collected. The Industry, company size, and the year of experience are the variable that is not set. The companies name, job title, base salary, highest paid salary, additional benefit, month and year that data are updated, and respondent number are collected to Wichita Kansas Developer’s Salary.xlsx
+
+
+### Data aggregation
+The role is compiled into high skills and non-high skills. There is no defined set to skills style but we can make an assumption that the higher skills worker will get compensated more, therefore, it needs to be in its own categories. The high skill is comprised of roles that include senior and manager. The other will be listed as a non-high skill.
+
+The average compensation with high skills job level are $76,232.19, $61,766.00, and $74,333.33 for 2016, 2017, and 2018 respectively. The average compensation without high skills job level are $69,880.79, $61,766.00, and $66,594.64 for 2016, 2017, and 2018 respectively. The data for the average with high skills is difficult to analyze since 2017 does not contain any high skill data at all. The high skills job comprised of roles that include senior and manager. We also have to take the data with a grain of salt since the data for each year were taken from different companies that control a different portion of the market. With all that being said we can see that there is a decrease in salary from 2016 to 2017 and an increase in 2018 but is still lower than in 2016.
+
+###  Converting to RPP
+The BEA stated that Wichita Regional Price Parity (RPP) is 90.2. We will make an assumption that the RPP stays at the same rate. When we convert the data to match the RPP the average compensation with high skills job level increases to $84,702.43, $68,628.89, and $82,592.59 for 2016, 2017, and 2018 respectively. The average compensation without high skills job level is $77,645.32, $68,628.89, and $73,994.05 for 2016, 2017, and 2018 respectively.
 
 ## Conclusion
