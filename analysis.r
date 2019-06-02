@@ -109,13 +109,24 @@ plot_per1000ByLocation <- makeplot_per1000ByLocation(
 
 plot_per1000ByLocation_all <- makeplot_per1000ByLocation(location_data)
 
-# Compare RPP adjusted salaries to regional peers
-plot_rppAdjustedSalaryByLocation <- makeplot_rppAdjustedSalaryByLocation(
+# Compare unadjusted salaries to regional peers
+plot_salaryByLocation <- makeplot_salaryByLocation(
   location_data %>%
-  filter(Location %in% peer_locations)
+  filter(Location %in% peer_locations),
+  rpp=FALSE
 )
 
-plot_rppAdjustedSalaryByLocation_all <- makeplot_rppAdjustedSalaryByLocation(location_data)
+# Compare RPP adjusted salaries to regional peers
+plot_rppAdjustedSalaryByLocation <- makeplot_salaryByLocation(
+  location_data %>%
+  filter(Location %in% peer_locations),
+  rpp=TRUE
+)
+
+plot_rppAdjustedSalaryByLocation_all <- makeplot_salaryByLocation(
+  location_data,
+  rpp=TRUE
+)
 
 # ggplot(chart_data, aes(LocQuotient, MedianSalary, label=Location)) +
 #   geom_point(aes(color=Location)) +

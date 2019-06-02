@@ -120,6 +120,10 @@ valueToPctStr(mean_salary / 77380 - 1)
 
 relative to the 2017 and 2018 survey figures, respectively.
 
+### How does the average Wichita dev salary compare to regional peers without any RPP adjustments?
+```{r}
+plot_salaryByLocation
+```
 
 ### How does the average Wichita dev salary compare to regional peers, RPP adjusted?
 ```{r}
