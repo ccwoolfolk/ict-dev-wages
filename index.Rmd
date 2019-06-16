@@ -172,8 +172,6 @@ plot_rppAdjustedSalaryByLocation_all
 
 (Ideally, nationally, but be careful with applying person-weighted RPPs to developer-weighted average income figures. I.e., if devs tend to live in high RPP areas, using the national RPP doesn't make sense.)
 
-### Does Wichita have a different mix of developer titles compared to peer cities?
-
 
 ## Conclusion
 
