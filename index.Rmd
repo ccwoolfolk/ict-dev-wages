@@ -159,12 +159,21 @@ get('plot_rppAdjustedSalaryByLocation', envir=env2017)
 ```
 
 
-### How does the average Wichita dev salary compare to tech hubs, RPP adjusted?
-plot_per1000ByLocation_all
+### How does Wichita compare to tech hubs?
+
+#### Developer Density
 
 ```{r}
 plot_per1000ByLocation_all
 ```
+
+#### Salary (no adjustments)
+
+```{r}
+plot_salaryByLocation_all
+```
+
+#### Salary (RPP-adjusted)
 
 ```{r}
 plot_rppAdjustedSalaryByLocation_all

@@ -139,6 +139,11 @@ plot_rppAdjustedSalaryByLocation <- makeplot_salaryByLocation(
   rpp=TRUE
 )
 
+plot_salaryByLocation_all <- makeplot_salaryByLocation(
+  location_data,
+  rpp=FALSE
+)
+
 plot_rppAdjustedSalaryByLocation_all <- makeplot_salaryByLocation(
   location_data,
   rpp=TRUE
