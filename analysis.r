@@ -10,14 +10,10 @@ for (pkg in c(
 }
 
 ROBUSTNESS_CHECK_OCCUPATIONS <- FALSE
-
-source(paste0(getwd(), '/chart_functions.r'))
-
-force_digits <- function (num, n_digits) {
-  return (format(round(num, n_digits), nsmall=n_digits))
-}
-
 data_year <- 2018
+
+source(paste0(getwd(), '/utils.r'))
+source(paste0(getwd(), '/chart_functions.r'))
 
 occupations <- c(
   'Web Developers',

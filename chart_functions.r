@@ -62,6 +62,7 @@ makeplot_salaryByLocation <- function(data_to_plot, rpp=FALSE, error = 0.03) {
     geom_col() +
     ylab(if (rpp) 'RPP-Adjusted Salaries' else 'Mean Salaries') +
     xlab('') +
+    scale_y_continuous(label=comma) +
     theme(legend.position = 'none') +
     coord_flip() +
     error_bars
