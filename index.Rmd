@@ -40,7 +40,7 @@ Four job categories are included in the base analysis:
 
 These categories comprise the entirety of the broad (5-digit) "Software Developers and Programmers" category and were chosen in an attempt to examine wage characteristics of workers who develop software as their primary job activity.
 
-Job category selection is context dependent, and there is no single "right" grouping. By selecting these categories, we exclude related categories such as "Database Administrators", "Computer Systems Analysts", etc. This decision can materially affect the results of the analysis. [^1] Users are encouraged to adjust the job category list to fit their specific questions.
+Job category selection is context dependent, and there is no single "right" grouping. By selecting these categories, we exclude related categories such as "Database Administrators", "Computer Systems Analysts", etc. This decision can materially affect the results of the analysis. [^2] Users are encouraged to adjust the job category list to fit their specific questions.
 
 ### Regional Price Parity Indexes
 
@@ -184,5 +184,5 @@ plot_rppAdjustedSalaryByLocation_all
 
 ## Conclusion
 
-[^1]: As a robustness check, the job category list was expanded to include an additional four categories. Wichita compared less favorably in this check. The mean annual salary was also within 2.5% of the 2018 Salary Survey results.
 [^1]: Direct correspondence with Bureau of Labor Statistics staff economist (May 24, 2019)
+[^2]: As a robustness check, the job category list was expanded to include an additional four categories. Wichita compared less favorably in this check. The mean annual salary was also within 2.5% of the 2018 Salary Survey results.
