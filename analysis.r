@@ -9,6 +9,8 @@ for (pkg in c(
   library(pkg, character.only = TRUE)
 }
 
+ROBUSTNESS_CHECK_OCCUPATIONS <- FALSE
+
 source(paste0(getwd(), '/chart_functions.r'))
 
 force_digits <- function (num, n_digits) {
@@ -23,6 +25,20 @@ occupations <- c(
   'Software Developers, Systems Software',
   'Computer Programmers'
 )
+
+if (ROBUSTNESS_CHECK_OCCUPATIONS) {
+  occupations <- c(
+    occupations,
+    c(
+      'Computer Systems Analysts',
+      'Information Security Analysts',
+      'Databaser Administrators',
+      'Network and Computer Systems Administrators'
+      # Excluded due to lack of availability in Des Moines
+      # 'Computer Network Architects'
+    )
+  )
+}
 
 wichita_area_name <- 'Wichita, KS'
 peer_locations <- c(

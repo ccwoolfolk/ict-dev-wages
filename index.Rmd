@@ -29,6 +29,19 @@ Since this is a survey, not a complete census, sampling _error_ limits the preci
 
 As an establishment survey, the OES survey groups remote workers and local workers together into the establishment. [^1] This means that remote workers will be included in the establishment's MSA, regardless of the worker's physical location.
 
+#### Job Categories
+
+Four job categories are included in the base analysis:
+
+1) [Computer Programmers](https://www.bls.gov/oes/current/oes151131.htm)
+2) [Software Developers, Applications](https://www.bls.gov/oes/current/oes151132.htm)
+3) [Software Developers, Systems Software](https://www.bls.gov/oes/current/oes151133.htm)
+4) [Web Developers](https://www.bls.gov/oes/current/oes151134.htm)
+
+These categories comprise the entirety of the broad (5-digit) "Software Developers and Programmers" category and were chosen in an attempt to examine wage characteristics of workers who develop software as their primary job activity.
+
+Job category selection is context dependent, and there is no single "right" grouping. By selecting these categories, we exclude related categories such as "Database Administrators", "Computer Systems Analysts", etc. This decision can materially affect the results of the analysis. [^1] Users are encouraged to adjust the job category list to fit their specific questions.
+
 ### Regional Price Parity Indexes
 
 Regional Price Parity (RPP) indexes are used to compare the cost of living in different MSAs. These estimates are sourced from the Bureau of Economic Analysis (BEA) at https://www.bea.gov/data/prices-inflation/regional-price-parities-state-and-metro-area. Note that the RPP dates do not align perfectly with the OES survey dates. While not ideal, this is not expected to introduce meaningful error since the _relative_ cost of living differences are not likely to change substantially over a 1-2 year window.
@@ -164,4 +177,5 @@ plot_rppAdjustedSalaryByLocation_all
 
 ## Conclusion
 
+[^1]: As a robustness check, the job category list was expanded to include an additional four categories. Wichita compared less favorably in this check. The mean annual salary was also within 2.5% of the 2018 Salary Survey results.
 [^1]: Direct correspondence with Bureau of Labor Statistics staff economist (May 24, 2019)
