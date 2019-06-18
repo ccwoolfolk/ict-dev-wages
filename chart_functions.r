@@ -18,22 +18,18 @@ makeplot_per1000ByLocation <- function (data_to_plot) {
   )
 }
 
-makeplot_rppAdjustedSalaryByLocation <- function(data_to_plot, error = 0.03) {
-  return (
-    ggplot(
+makeplot_salaryByLocation <- function(data_to_plot, rpp=FALSE, error = 0.03) {
+  if (rpp) {
+    base_plot <- ggplot(
       data_to_plot,
       aes(
         x=reorder(Location, -RppAdjSalary),
         y=RppAdjSalary,
         fill=(Location == wichita_area_name)
       )
-    ) +
-    geom_col() +
-    ylab('RPP-Adjusted Salaries') +
-    xlab('') +
-    theme(legend.position = 'none') +
-    coord_flip() + 
-    geom_errorbar(
+    )
+
+    error_bars <- geom_errorbar(
       aes(
         x=Location,
         ymin=(1-error) * RppAdjSalary,
@@ -41,5 +37,34 @@ makeplot_rppAdjustedSalaryByLocation <- function(data_to_plot, error = 0.03) {
       ),
       width = 0.2
     )
+  } else {
+    base_plot <- ggplot(
+      data_to_plot,
+      aes(
+        x=reorder(Location, -MeanSalary),
+        y=MeanSalary,
+        fill=(Location == wichita_area_name)
+      )
+    )
+
+    error_bars <- geom_errorbar(
+      aes(
+        x=Location,
+        ymin=(1-error) * MeanSalary,
+        ymax=(1 + error) * MeanSalary
+      ),
+      width = 0.2
+    )
+  }
+
+  return (
+    base_plot +
+    geom_col() +
+    ylab(if (rpp) 'RPP-Adjusted Salaries' else 'Mean Salaries') +
+    xlab('') +
+    scale_y_continuous(label=comma) +
+    theme(legend.position = 'none') +
+    coord_flip() +
+    error_bars
   )
 }

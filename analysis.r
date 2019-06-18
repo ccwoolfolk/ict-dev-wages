@@ -9,13 +9,11 @@ for (pkg in c(
   library(pkg, character.only = TRUE)
 }
 
-source(paste0(getwd(), '/chart_functions.r'))
-
-force_digits <- function (num, n_digits) {
-  return (format(round(num, n_digits), nsmall=n_digits))
-}
-
+ROBUSTNESS_CHECK_OCCUPATIONS <- FALSE
 data_year <- 2018
+
+source(paste0(getwd(), '/utils.r'))
+source(paste0(getwd(), '/chart_functions.r'))
 
 occupations <- c(
   'Web Developers',
@@ -23,6 +21,20 @@ occupations <- c(
   'Software Developers, Systems Software',
   'Computer Programmers'
 )
+
+if (ROBUSTNESS_CHECK_OCCUPATIONS) {
+  occupations <- c(
+    occupations,
+    c(
+      'Computer Systems Analysts',
+      'Information Security Analysts',
+      'Databaser Administrators',
+      'Network and Computer Systems Administrators'
+      # Excluded due to lack of availability in Des Moines
+      # 'Computer Network Architects'
+    )
+  )
+}
 
 wichita_area_name <- 'Wichita, KS'
 peer_locations <- c(
@@ -109,13 +121,29 @@ plot_per1000ByLocation <- makeplot_per1000ByLocation(
 
 plot_per1000ByLocation_all <- makeplot_per1000ByLocation(location_data)
 
-# Compare RPP adjusted salaries to regional peers
-plot_rppAdjustedSalaryByLocation <- makeplot_rppAdjustedSalaryByLocation(
+# Compare unadjusted salaries to regional peers
+plot_salaryByLocation <- makeplot_salaryByLocation(
   location_data %>%
-  filter(Location %in% peer_locations)
+  filter(Location %in% peer_locations),
+  rpp=FALSE
 )
 
-plot_rppAdjustedSalaryByLocation_all <- makeplot_rppAdjustedSalaryByLocation(location_data)
+# Compare RPP adjusted salaries to regional peers
+plot_rppAdjustedSalaryByLocation <- makeplot_salaryByLocation(
+  location_data %>%
+  filter(Location %in% peer_locations),
+  rpp=TRUE
+)
+
+plot_salaryByLocation_all <- makeplot_salaryByLocation(
+  location_data,
+  rpp=FALSE
+)
+
+plot_rppAdjustedSalaryByLocation_all <- makeplot_salaryByLocation(
+  location_data,
+  rpp=TRUE
+)
 
 # ggplot(chart_data, aes(LocQuotient, MedianSalary, label=Location)) +
 #   geom_point(aes(color=Location)) +
