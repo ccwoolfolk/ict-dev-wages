@@ -181,28 +181,22 @@ plot_rppAdjustedSalaryByLocation_all
 
 (Ideally, nationally, but be careful with applying person-weighted RPPs to developer-weighted average income figures. I.e., if devs tend to live in high RPP areas, using the national RPP doesn't make sense.)
 
+### Robustness check using Glassdoor
+> By Watthana Southivong
+#### Methodology
 
-### Does Wichita have a different mix of developer titles compared to peer cities?
-
-### Wichita employers' contribution to the job market
-
-### Methodology
-
-To be able to provide a sense of the context of how much an employer in Wichita contribute to the software community we need to obtain the salary information from employers around the Wichita area. The project describes a developer as “software developer”, “web developer”, and “computer programmer”.
-
-The data was collected through glassdoor.com. Glassdoor lets any employee and employer to anonymously post a review and work compensation about their company. The data that are collected through Glassdoor in the Wichita area is weak due to the low amount of posting and the data are not updated yearly. It would be hard to make use of the data but it still provides base knowledge for us to know how much each employer have contributed to the job market. While not ideal, we can make an assumption that job salary does not increase significantly from each year.
-
-The data is collected through searches for “software developer”, “web developer”, and “ computer programmer” with restriction to only Wichita, Kansas. Only compensation update that is from 2016 to 2018 are being collected. The Industry, company size, and the year of experience are the variable that is not set. The companies name, job title, base salary, highest paid salary, additional benefit, month and year that data are updated, and respondent number are collected to Wichita Kansas Developer’s Salary.xlsx
+The data was collected through [Glassdoor](https://www.glassdoor.com), which lets an employee and employer to anonymously post a review and work compensation about their company. The data that are collected through Glassdoor in the Wichita area is weak due to the low amount of posting and the data are not updated yearly. It would be hard to make use of the data but it still provides base knowledge to know how much each developer are being compensated.
+While not ideal, we can make an assumption that job salary does not increase significantly from each year.The data is collected through searches for “software developer”, “web developer”, and “ computer programmer” with restriction to only Wichita, Kansas. Only compensation update that is from 2016 to 2018 are being collected. The Industry, company size, and the year of experience are the variable that is not set. The companies name, job title, base salary, highest paid salary, additional benefit, month and year that data are updated, and respondent number are collected to Wichita Kansas Developer’s Salary.xlsx
 
 
-### Data aggregation
+#### Data aggregation
 The role is compiled into high skills and non-high skills. There is no defined set to skills style but we can make an assumption that the higher skills worker will get compensated more, therefore, it needs to be in its own categories. The high skill is comprised of roles that include senior and manager. The other will be listed as a non-high skill.
+The average compensation with high skills job level is $114,500. The average compensation without high skills job level is $67,000. The combined compensation average is $73,500. The data for the average with high skills is difficult to analyze since 2017 does not contain any high skill data at all. We also have to take the data with a grain of salt since the data for each year were taken from different companies that control a different portion of the market.
 
-The average compensation with high skills job level is $114,500. The average compensation without high skills job level is $67,400. The combined compensation average is $73,500. The data for the average with high skills is difficult to analyze since 2017 does not contain any high skill data at all. We also have to take the data with a grain of salt since the data for each year were taken from different companies that control a different portion of the market.
-
-|High skills|Low skills|Total Average|
-|---|---|---|
-| $114,500 | $67,400 | $73,500 |
+|---|High skills|Low skills|Total Average|
+|---|---|---|---|
+|Salary| $114,500|$67,000|$73,500|
+|# Data Points|3|19|22|
 
 ## Conclusion
 
