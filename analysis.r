@@ -113,35 +113,55 @@ location_data <- group_by(chart_data, Location) %>%
 location_data <- left_join(location_data, rpp, 'Location') %>%
   mutate(RppAdjSalary = MeanSalary * 100 / RPP)
 
+pretty_names <- function (x) {
+  prettified <- x %>%
+    mutate(Location = replace(Location, Location == 'Des Moines-West Des Moines, IA', 'Des Moines, IA')) %>%
+    mutate(Location = replace(Location, Location == 'Austin-Round Rock, TX', 'Austin, TX')) %>%
+    mutate(Location = replace(Location, Location == 'Omaha-Council Bluffs, NE-IA', 'Omaha, NE')) %>%
+    mutate(Location = replace(Location, Location == 'San Jose-Sunnyvale-Santa Clara, CA', 'San Jose, CA')) %>%
+    mutate(Location = replace(Location, Location == 'Denver-Aurora-Lakewood, CO', 'Denver, CO'))
+  return(prettified)
+}
+
 # Compare Per1000Jobs by location
 plot_per1000ByLocation <- makeplot_per1000ByLocation(
-  location_data %>%
-  filter(Location %in% peer_locations)
+  pretty_names(
+    location_data %>%
+    filter(Location %in% peer_locations)
+  )
 )
 
-plot_per1000ByLocation_all <- makeplot_per1000ByLocation(location_data)
+plot_per1000ByLocation_all <- makeplot_per1000ByLocation(
+  pretty_names(
+    location_data
+  )
+)
 
 # Compare unadjusted salaries to regional peers
 plot_salaryByLocation <- makeplot_salaryByLocation(
-  location_data %>%
-  filter(Location %in% peer_locations),
+  pretty_names(
+    location_data %>%
+    filter(Location %in% peer_locations)
+  ),
   rpp=FALSE
 )
 
 # Compare RPP adjusted salaries to regional peers
 plot_rppAdjustedSalaryByLocation <- makeplot_salaryByLocation(
-  location_data %>%
-  filter(Location %in% peer_locations),
+  pretty_names(
+    location_data %>%
+    filter(Location %in% peer_locations)
+  ),
   rpp=TRUE
 )
 
 plot_salaryByLocation_all <- makeplot_salaryByLocation(
-  location_data,
+  pretty_names(location_data),
   rpp=FALSE
 )
 
 plot_rppAdjustedSalaryByLocation_all <- makeplot_salaryByLocation(
-  location_data,
+  pretty_names(location_data),
   rpp=TRUE
 )
 
