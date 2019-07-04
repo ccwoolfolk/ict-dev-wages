@@ -142,7 +142,7 @@ plot_salaryByLocation
 ```{r}
 env2017 <- new.env()
 load('salaryByLocation2017.RData', envir=env2017)
-get('plot_salaryByLocation', envir=env2017) + scale_y_continuous(label=comma)
+get('plot_salaryByLocation', envir=env2017) + scale_y_continuous(label=comma) + theme(axis.text = element_text(size=12))
 ```
 
 ### How does the average Wichita dev salary compare to regional peers, RPP adjusted?
@@ -155,7 +155,7 @@ Note the RPP values are from 2016 while the salary values are from 2018. Since w
 2017 data for additional context:
 ```{r}
 load('rppAdjustedSalaryByLocation2017.RData', envir=env2017)
-get('plot_rppAdjustedSalaryByLocation', envir=env2017) + scale_y_continuous(label=comma)
+get('plot_rppAdjustedSalaryByLocation', envir=env2017) + scale_y_continuous(label=comma) + theme(axis.text = element_text(size=12))
 ```
 
 

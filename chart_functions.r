@@ -13,7 +13,7 @@ makeplot_per1000ByLocation <- function (data_to_plot) {
     geom_col() +
     ylab('Developer Jobs Per 1000 Jobs') +
     xlab('') +
-    theme(legend.position = 'none') +
+    theme(legend.position = 'none', axis.text = element_text(size=12)) +
     coord_flip()
   )
 }
@@ -63,7 +63,7 @@ makeplot_salaryByLocation <- function(data_to_plot, rpp=FALSE, error = 0.03) {
     ylab(if (rpp) 'RPP-Adjusted Salaries' else 'Mean Salaries') +
     xlab('') +
     scale_y_continuous(label=comma) +
-    theme(legend.position = 'none') +
+    theme(legend.position = 'none', axis.text = element_text(size=12)) +
     coord_flip() +
     error_bars
   )
