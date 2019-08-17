@@ -181,8 +181,5 @@ plot_rppAdjustedSalaryByLocation_all
 
 (Ideally, nationally, but be careful with applying person-weighted RPPs to developer-weighted average income figures. I.e., if devs tend to live in high RPP areas, using the national RPP doesn't make sense.)
 
-
-## Conclusion
-
 [^1]: Direct correspondence with Bureau of Labor Statistics staff economist (May 24, 2019)
 [^2]: As a robustness check, the job category list was expanded to include an additional four categories. Wichita compared less favorably in this check. The mean annual salary was also within 2.5% of the 2018 Salary Survey results.
