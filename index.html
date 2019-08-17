@@ -275,6 +275,48 @@ get('plot_rppAdjustedSalaryByLocation', envir=env2017) + scale_y_continuous(labe
 <p>(Ideally, nationally, but be careful with applying person-weighted RPPs to developer-weighted average income figures. I.e., if devs tend to live in high RPP areas, using the national RPP doesn’t make sense.)</p>
 </div>
 </div>
+<div id="robustness-check-using-glassdoor" class="section level3">
+<h3>Robustness check using Glassdoor</h3>
+<blockquote>
+<p>By Watthana Southivong</p>
+</blockquote>
+<div id="methodology" class="section level4">
+<h4>Methodology</h4>
+<p>The data was collected through <a href="https://www.glassdoor.com">Glassdoor</a>, which lets an employee and employer to anonymously post a review and work compensation about their company. The data that are collected through Glassdoor in the Wichita area is weak due to the low amount of posting and the data are not updated yearly. It would be hard to make use of the data but it still provides base knowledge to know how much each developer are being compensated.</p>
+<p>While not ideal, we can make an assumption that job salary does not increase significantly from each year.The data is collected through searches for “software developer”, “web developer”, and “ computer programmer” with restriction to only Wichita, Kansas. Only compensation update that is from 2016 to 2018 are being collected. The Industry, company size, and the year of experience are the variable that is not set. The companies name, job title, base salary, highest paid salary, additional benefit, month and year that data are updated, and respondent number are collected to an <a href="https://drive.google.com/file/d/1_Ox_UxgYD5NVaoTH6uF-mi2mZfmcT7TU/view?usp=sharing">excel sheet</a>.</p>
+</div>
+<div id="data-aggregation" class="section level4">
+<h4>Data aggregation</h4>
+<p>The role is compiled into high skills and non-high skills. There is no defined set to skills style but we can make an assumption that the higher skills worker will get compensated more, therefore, it needs to be in its own categories. The high skill is comprised of roles that include senior and manager. The other will be listed as a non-high skill. The average compensation with high skills job level is $114,500. The average compensation without high skills job level is $67,000. The combined compensation average is $73,500. The data for the average with high skills is difficult to analyze since 2017 does not contain any high skill data at all. We also have to take the data with a grain of salt since the data for each year were taken from different companies that control a different portion of the market.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>High skills</th>
+<th>Low skills</th>
+<th>Total Average</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Salary</td>
+<td>$114,500</td>
+<td>$67,000</td>
+<td>$73,500</td>
+</tr>
+<tr class="even">
+<td># Data Points</td>
+<td>3</td>
+<td>19</td>
+<td>22</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="footnotes" class="section level2">
+<h2>Footnotes</h2>
 </div>
 <div class="footnotes">
 <hr />
